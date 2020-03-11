@@ -9,7 +9,7 @@ import (
 	"github.com/go-spatial/tegola/provider"
 
 	_ "github.com/go-spatial/tegola/provider/postgis"
-	_ "tegola-kosotd/provider/presto"
+	_ "github.com/kosotd/tegola/provider/presto"
 )
 
 var Root = &cobra.Command{

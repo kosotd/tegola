@@ -8,5 +8,5 @@ package atlas
 //
 // go build -tags 'noPostgisProvider'
 import (
-	_ "tegola-kosotd/provider/presto"
+	_ "github.com/kosotd/tegola/provider/presto"
 )
