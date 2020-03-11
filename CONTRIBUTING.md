@@ -11,17 +11,17 @@ By participating, you are expected to uphold this code. Please report unacceptab
 
 ### Found a bug or something doesn’t feel right?
 
-Everything we do is done through [issues](https://github.com/go-spatial/tegola/issues). The first thing to do is to search the current issues to see if it is something that has been reported or requested already. If you are unable to find an issue that is similar or are unsure just file a new issue. If you find one that is similar, you can add a comment to add additional details, or if you have nothing new to add you can “+1” the issue.
+Everything we do is done through [issues](https://github.com/kosotd/tegola/issues). The first thing to do is to search the current issues to see if it is something that has been reported or requested already. If you are unable to find an issue that is similar or are unsure just file a new issue. If you find one that is similar, you can add a comment to add additional details, or if you have nothing new to add you can “+1” the issue.
 
 * If you are unable to find an issue that is similar or are unsure go ahead and file a new one. 
-* If it is a bug your can use the following [template](https://github.com/go-spatial/tegola/issues/new?template=bug.md). 
+* If it is a bug your can use the following [template](https://github.com/kosotd/tegola/issues/new?template=bug.md). 
 * If this is a rendering bug, please include the relevant data set and configuration file. 
-* If it is a feature request use the following [template](https://github.com/go-spatial/tegola/issues/new?template=feature.md).
+* If it is a feature request use the following [template](https://github.com/kosotd/tegola/issues/new?template=feature.md).
 * If this is a feature request, please include a description of what the feature is, and the use case for the feature.
 
 Once you have filed an issue, we will discuss it in the issue. If we need more information or you have further questions about that issue, this is the place to ask. This is the place where we will discuss the design of the fix or feature. Any pull request that adds a feature or fixes an issue should reference the issue number.
 
-If you have changes to for the Tegola.io website — documentation on the website, tutorials, translation or anything else — the process is similar but on a different [repository](https://github.com/go-spatial/tegola-docs) (https://github.com/go-spatial/tegola-docs).
+If you have changes to for the Tegola.io website — documentation on the website, tutorials, translation or anything else — the process is similar but on a different [repository](https://github.com/kosotd/tegola-docs) (https://github.com/kosotd/tegola-docs).
 
 Don’t be afraid to reach out if you have any questions.  You can reach us on the gophers Slack on the channel #tegola or #go-spatial. You can get an invite into the gophers Slack via (https://invite.slack.golangbridge.org/)
 
@@ -43,9 +43,9 @@ Want to contribute but not sure where? Not a problem, the best thing to do is lo
 
 ## How to build from source
 
-If you just need to play with the binary the easy way is to get the binary from our [releases page](https://github.com/go-spatial/tegola/releases), or if a binary for your OS is not there, use `go get -u github.com/go-spatial/tegola/cmd/tegola`.
+If you just need to play with the binary the easy way is to get the binary from our [releases page](https://github.com/kosotd/tegola/releases), or if a binary for your OS is not there, use `go get -u github.com/kosotd/tegola/cmd/tegola`.
 
-If however you want to build the latest release candidate you will have to build from source. The first thing to do is to clone the `go-spatial/tegola` repo to your `GOPATH`. The simplest way to do this is to use `go get -u github.com/go-spatial/tegola`, navigate to the repository root then: 
+If however you want to build the latest release candidate you will have to build from source. The first thing to do is to clone the `go-spatial/tegola` repo to your `GOPATH`. The simplest way to do this is to use `go get -u github.com/kosotd/tegola`, navigate to the repository root then: 
 
 * Checkout the current release candidate branch, (i.e. v0.7.0)
 	
@@ -98,5 +98,5 @@ For more information about this work flow, please refer to this [great explanati
 
 ## Testing
 
-For tests we use go 1.7 sub tests. Please, look at the [cmp_test.go](https://github.com/go-spatial/tegola/blob/master/geom/cmp/cmp_test.go).
+For tests we use go 1.7 sub tests. Please, look at the [cmp_test.go](https://github.com/kosotd/tegola/blob/master/geom/cmp/cmp_test.go).
 

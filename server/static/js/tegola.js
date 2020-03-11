@@ -184,7 +184,7 @@ var app = new Vue({
 			]);
 
 			//	everPresent contains the keys that should be "pinned" to the top of the feature inspector. Others
-			//	will follow and simply be ordered by alpha. See https://github.com/go-spatial/tegola/issues/367
+			//	will follow and simply be ordered by alpha. See https://github.com/kosotd/tegola/issues/367
 			var everPresent = ['name', 'type', 'featurecla'];
 			for (var i=0, l=features.length; i<l; i++){
 				html += '<h4>'+features[i].layer.id+'</h4>';

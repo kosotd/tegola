@@ -3,9 +3,9 @@ package maths
 import (
 	"fmt"
 
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/basic"
-	"github.com/go-spatial/tegola/maths"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/basic"
+	"github.com/kosotd/tegola/maths"
 )
 
 var ErrUnableToClean = fmt.Errorf("Unable to clean MultiPolygon.")

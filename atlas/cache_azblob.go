@@ -8,5 +8,5 @@ package atlas
 //
 // go build -tags 'noAzblobCache'
 import (
-	_ "github.com/go-spatial/tegola/cache/azblob"
+	_ "github.com/kosotd/tegola/cache/azblob"
 )

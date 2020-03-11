@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/go-spatial/tegola/config"
-	"github.com/go-spatial/tegola/internal/env"
+	"github.com/kosotd/tegola/config"
+	"github.com/kosotd/tegola/internal/env"
 )
 
 const (
@@ -181,7 +181,7 @@ func TestParse(t *testing.T) {
 								MinZoom:       env.UintPtr(10),
 								MaxZoom:       env.UintPtr(20),
 								DontSimplify:  true,
-								DontClip:  true,
+								DontClip:      true,
 							},
 						},
 					},

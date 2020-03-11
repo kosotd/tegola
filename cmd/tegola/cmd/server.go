@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/go-spatial/cobra"
-	gdcmd "github.com/go-spatial/tegola/internal/cmd"
-	"github.com/go-spatial/tegola/provider"
-	"github.com/go-spatial/tegola/server"
+	gdcmd "github.com/kosotd/tegola/internal/cmd"
+	"github.com/kosotd/tegola/provider"
+	"github.com/kosotd/tegola/server"
 )
 
 var (

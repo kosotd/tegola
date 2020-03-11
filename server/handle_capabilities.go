@@ -6,7 +6,7 @@ import (
 	"net/url"
 
 	"github.com/go-spatial/geom"
-	"github.com/go-spatial/tegola/atlas"
+	"github.com/kosotd/tegola/atlas"
 )
 
 type Capabilities struct {

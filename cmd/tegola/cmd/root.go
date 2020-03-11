@@ -4,12 +4,12 @@ import (
 	"fmt"
 
 	"github.com/go-spatial/cobra"
-	"github.com/go-spatial/tegola/atlas"
-	"github.com/go-spatial/tegola/cmd/internal/register"
-	cachecmd "github.com/go-spatial/tegola/cmd/tegola/cmd/cache"
-	"github.com/go-spatial/tegola/config"
-	"github.com/go-spatial/tegola/dict"
-	"github.com/go-spatial/tegola/internal/log"
+	"github.com/kosotd/tegola/atlas"
+	"github.com/kosotd/tegola/cmd/internal/register"
+	cachecmd "github.com/kosotd/tegola/cmd/tegola/cmd/cache"
+	"github.com/kosotd/tegola/config"
+	"github.com/kosotd/tegola/dict"
+	"github.com/kosotd/tegola/internal/log"
 )
 
 var (

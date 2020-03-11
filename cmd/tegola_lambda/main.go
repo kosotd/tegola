@@ -10,11 +10,11 @@ import (
 	"github.com/akrylysov/algnhsa"
 	"github.com/dimfeld/httptreemux"
 
-	"github.com/go-spatial/tegola/atlas"
-	"github.com/go-spatial/tegola/cmd/internal/register"
-	"github.com/go-spatial/tegola/config"
-	"github.com/go-spatial/tegola/dict"
-	"github.com/go-spatial/tegola/server"
+	"github.com/kosotd/tegola/atlas"
+	"github.com/kosotd/tegola/cmd/internal/register"
+	"github.com/kosotd/tegola/config"
+	"github.com/kosotd/tegola/dict"
+	"github.com/kosotd/tegola/server"
 )
 
 var (

@@ -9,8 +9,8 @@ import (
 	"sync"
 
 	"github.com/go-spatial/geom/slippy"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/cache"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/cache"
 )
 
 // defaultAtlas is instanitated for convenience

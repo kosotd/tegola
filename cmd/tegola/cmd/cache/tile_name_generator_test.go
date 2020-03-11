@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/go-spatial/geom/slippy"
-	"github.com/go-spatial/tegola"
+	"github.com/kosotd/tegola"
 )
 
 func TestGenerateTilesForTileName(t *testing.T) {

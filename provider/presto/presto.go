@@ -12,10 +12,11 @@ import (
 	"github.com/go-spatial/geom"
 	"github.com/go-spatial/geom/encoding/wkb"
 	"github.com/go-spatial/geom/slippy"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/provider"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/provider"
 
-	"github.com/go-spatial/tegola/dict"
+	"github.com/kosotd/tegola/dict"
+	_ "github.com/prestodb/presto-go-client/presto"
 )
 
 const Name = "presto"
@@ -319,7 +320,7 @@ func (p Provider) inspectLayerGeomType(l *Layer) error {
 	// we want to know the geom type instead of returning the geom data so we modify the SQL
 	// TODO (arolek): this strategy wont work if remove the requirement of wrapping ST_AsBinary(geom) in the SQL statements.
 	//
-	// https://github.com/go-spatial/tegola/issues/180
+	// https://github.com/kosotd/tegola/issues/180
 	//
 	// case insensitive search
 	re := regexp.MustCompile(`(?i)ST_AsBinary`)

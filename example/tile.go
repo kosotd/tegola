@@ -8,10 +8,10 @@ import (
 	"context"
 
 	"github.com/go-spatial/geom/encoding/wkb"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/internal/convert"
-	"github.com/go-spatial/tegola/mvt"
 	"github.com/golang/protobuf/proto"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/internal/convert"
+	"github.com/kosotd/tegola/mvt"
 )
 
 // TileExample is a quick example of how to use the interface to marshall a tile.

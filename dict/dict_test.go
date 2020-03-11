@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/go-spatial/tegola/dict"
+	"github.com/kosotd/tegola/dict"
 )
 
 func TestDict(t *testing.T) {

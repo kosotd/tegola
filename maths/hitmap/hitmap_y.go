@@ -1,6 +1,6 @@
 package hitmap
 
-import "github.com/go-spatial/tegola/maths"
+import "github.com/kosotd/tegola/maths"
 
 type segEventY struct {
 	x1         int64 // float64

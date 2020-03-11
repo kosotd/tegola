@@ -6,8 +6,8 @@ import (
 
 	"errors"
 
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/maths/webmercator"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/maths/webmercator"
 )
 
 // ApplyToPoints applys the given function to each point in the geometry and any sub geometries, return a new transformed geometry.

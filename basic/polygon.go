@@ -1,8 +1,8 @@
 package basic
 
 import (
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/maths"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/maths"
 )
 
 // Polygon describes a basic polygon; made up of multiple lines.

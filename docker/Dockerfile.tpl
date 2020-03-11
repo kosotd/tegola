@@ -1,5 +1,5 @@
 # To build, run in root of tegola source tree:
-#  1. git clone git@github.com:go-spatial/tegola.git or git clone https://github.com/go-spatial/tegola.git
+#  1. git clone git@github.com:go-spatial/tegola.git or git clone https://github.com/kosotd/tegola.git
 #  2. cd tegola
 #  3. docker build -f docker/Dockerfile -t gospatial/tegola:<version> .
 #
@@ -36,11 +36,11 @@ RUN apk update \
 	&& apk add gcc=8.3.0-r0
 
 # Set up source for compilation
-RUN mkdir -p /go/src/github.com/go-spatial/tegola
-COPY . /go/src/github.com/go-spatial/tegola
+RUN mkdir -p /go/src/github.com/kosotd/tegola
+COPY . /go/src/github.com/kosotd/tegola
 
 # Build binary
-RUN cd /go/src/github.com/go-spatial/tegola/cmd/tegola \
+RUN cd /go/src/github.com/kosotd/tegola/cmd/tegola \
 	&& go build -v {{.flags}} -gcflags "-N -l" -o /opt/tegola \ 
 	&& chmod a+x /opt/tegola
 

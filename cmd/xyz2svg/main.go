@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go-spatial/tegola/cmd/xyz2svg/cmd"
+	"github.com/kosotd/tegola/cmd/xyz2svg/cmd"
 )
 
 func main() {

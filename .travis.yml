@@ -1,6 +1,6 @@
 language: go
 # Does nothing when building on go-spatial/tegola, but makes builds work cleanly on forks.
-go_import_path: github.com/go-spatial/tegola
+go_import_path: github.com/kosotd/tegola
 
 dist: xenial
 

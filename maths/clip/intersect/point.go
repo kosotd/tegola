@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/go-spatial/tegola/container/singlelist"
-	ptList "github.com/go-spatial/tegola/container/singlelist/point/list"
-	"github.com/go-spatial/tegola/maths"
+	"github.com/kosotd/tegola/container/singlelist"
+	ptList "github.com/kosotd/tegola/container/singlelist/point/list"
+	"github.com/kosotd/tegola/maths"
 )
 
 type Point struct {

@@ -4,8 +4,8 @@ import (
 	"errors"
 	"log"
 
-	"github.com/go-spatial/tegola/container/singlelist/point/list"
-	"github.com/go-spatial/tegola/maths"
+	"github.com/kosotd/tegola/container/singlelist/point/list"
+	"github.com/kosotd/tegola/maths"
 )
 
 // ErrInvalidCoordsNumber is the error produced when the number of coordinates provided is not even or large enough to from a linestring.

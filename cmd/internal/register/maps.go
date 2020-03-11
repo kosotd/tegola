@@ -6,10 +6,10 @@ import (
 	"strings"
 
 	"github.com/go-spatial/geom"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/atlas"
-	"github.com/go-spatial/tegola/config"
-	"github.com/go-spatial/tegola/provider"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/atlas"
+	"github.com/kosotd/tegola/config"
+	"github.com/kosotd/tegola/provider"
 )
 
 type ErrProviderLayerInvalid struct {
@@ -162,7 +162,7 @@ func Maps(a *atlas.Atlas, maps []config.Map, providers map[string]provider.Tiler
 				DefaultTags:       defaultTags,
 				GeomType:          layerGeomType,
 				DontSimplify:      bool(l.DontSimplify),
-				DontClip:      	   bool(l.DontClip),
+				DontClip:          bool(l.DontClip),
 			})
 		}
 

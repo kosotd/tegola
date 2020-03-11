@@ -9,11 +9,11 @@ import (
 	"strings"
 
 	"github.com/go-spatial/geom/slippy"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/basic"
-	"github.com/go-spatial/tegola/provider"
 	"github.com/jackc/pgx"
 	"github.com/jackc/pgx/pgtype"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/basic"
+	"github.com/kosotd/tegola/provider"
 )
 
 // genSQL will fill in the SQL field of a layer given a pool, and list of fields.

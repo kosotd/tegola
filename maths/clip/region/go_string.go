@@ -3,8 +3,8 @@ package region
 import (
 	"fmt"
 
-	"github.com/go-spatial/tegola/container/singlelist/point/list"
-	"github.com/go-spatial/tegola/maths"
+	"github.com/kosotd/tegola/container/singlelist/point/list"
+	"github.com/kosotd/tegola/maths"
 )
 
 func (r *Region) GoString() string {

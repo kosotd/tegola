@@ -7,11 +7,11 @@ import (
 	"context"
 
 	"github.com/go-spatial/geom/slippy"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/dict"
-	"github.com/go-spatial/tegola/provider"
-	"github.com/go-spatial/tegola/provider/postgis"
 	"github.com/jackc/pgx"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/dict"
+	"github.com/kosotd/tegola/provider"
+	"github.com/kosotd/tegola/provider/postgis"
 )
 
 func TestTLSConfig(t *testing.T) {

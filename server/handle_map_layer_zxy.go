@@ -10,11 +10,11 @@ import (
 	"github.com/dimfeld/httptreemux"
 	"github.com/go-spatial/geom"
 	"github.com/go-spatial/geom/slippy"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/atlas"
-	"github.com/go-spatial/tegola/internal/log"
-	"github.com/go-spatial/tegola/maths"
-	"github.com/go-spatial/tegola/mvt"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/atlas"
+	"github.com/kosotd/tegola/internal/log"
+	"github.com/kosotd/tegola/maths"
+	"github.com/kosotd/tegola/mvt"
 )
 
 type HandleMapLayerZXY struct {

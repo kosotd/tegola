@@ -16,7 +16,7 @@ if [ -z "${VERSION_TAG}" ]; then
 	 fi
 fi
 
-LDFLAGS="-w -X github.com/go-spatial/tegola/cmd/tegola/cmd.Version=${VERSION_TAG}"
+LDFLAGS="-w -X github.com/kosotd/tegola/cmd/tegola/cmd.Version=${VERSION_TAG}"
 if [ -z "$CONTAINER_MAINTAINER" ]; then
 	 CONTAINER_MAINTAINER="a.rolek@gmail.com"
 fi

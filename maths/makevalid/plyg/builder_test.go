@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/gdey/tbltest"
-	"github.com/go-spatial/tegola/maths"
+	"github.com/kosotd/tegola/maths"
 )
 
 func TestBuilder(t *testing.T) {

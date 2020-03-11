@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/gdey/tbltest"
-	"github.com/go-spatial/tegola/container/singlelist/point/list"
-	"github.com/go-spatial/tegola/maths"
+	"github.com/kosotd/tegola/container/singlelist/point/list"
+	"github.com/kosotd/tegola/maths"
 )
 
 func TestNewRegion(t *testing.T) {

@@ -11,12 +11,12 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"github.com/go-spatial/geom/slippy"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/atlas"
-	"github.com/go-spatial/tegola/internal/p"
-	vectorTile "github.com/go-spatial/tegola/mvt/vector_tile"
-	"github.com/go-spatial/tegola/provider/test"
-	"github.com/go-spatial/tegola/provider/test/emptycollection"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/atlas"
+	"github.com/kosotd/tegola/internal/p"
+	vectorTile "github.com/kosotd/tegola/mvt/vector_tile"
+	"github.com/kosotd/tegola/provider/test"
+	"github.com/kosotd/tegola/provider/test/emptycollection"
 )
 
 func TestMapFilterLayersByZoom(t *testing.T) {

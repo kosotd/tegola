@@ -5,8 +5,8 @@ import (
 
 	"context"
 
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/mvt/vector_tile"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/mvt/vector_tile"
 )
 
 //Tile describes a tile.

@@ -10,8 +10,8 @@ import (
 
 	"errors"
 
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/maths/webmercator"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/maths/webmercator"
 )
 
 const (
@@ -331,6 +331,8 @@ func Exp2(p uint64) uint64 {
 
 // Minimum of uints
 func Min(x, y uint) uint {
-	if x < y {return x}
+	if x < y {
+		return x
+	}
 	return y
 }

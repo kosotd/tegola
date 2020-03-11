@@ -11,14 +11,14 @@ import (
 
 	"github.com/go-spatial/geom"
 	"github.com/go-spatial/geom/slippy"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/basic"
-	"github.com/go-spatial/tegola/dict"
-	"github.com/go-spatial/tegola/internal/convert"
-	"github.com/go-spatial/tegola/mvt"
-	"github.com/go-spatial/tegola/provider"
-	"github.com/go-spatial/tegola/provider/debug"
 	"github.com/golang/protobuf/proto"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/basic"
+	"github.com/kosotd/tegola/dict"
+	"github.com/kosotd/tegola/internal/convert"
+	"github.com/kosotd/tegola/mvt"
+	"github.com/kosotd/tegola/provider"
+	"github.com/kosotd/tegola/provider/debug"
 )
 
 // NewMap creates a new map with the necessary default values
@@ -146,7 +146,7 @@ func (m Map) Encode(ctx context.Context, tile *slippy.Tile) ([]byte, error) {
 			mvtLayer := mvt.Layer{
 				Name:         l.MVTName(),
 				DontSimplify: l.DontSimplify,
-				DontClip: l.DontClip,
+				DontClip:     l.DontClip,
 			}
 
 			// on completion let the wait group know

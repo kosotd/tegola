@@ -11,10 +11,10 @@ import (
 
 	"github.com/gdey/tbltest"
 	"github.com/go-spatial/geom"
-	"github.com/go-spatial/tegola/draw/svg"
-	"github.com/go-spatial/tegola/maths"
-	"github.com/go-spatial/tegola/maths/hitmap"
 	"github.com/go-test/deep"
+	"github.com/kosotd/tegola/draw/svg"
+	"github.com/kosotd/tegola/maths"
+	"github.com/kosotd/tegola/maths/hitmap"
 )
 
 const TileBuffer = 16

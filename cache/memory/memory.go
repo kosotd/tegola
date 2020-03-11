@@ -3,11 +3,11 @@ package memory
 import (
 	"sync"
 
-	"github.com/go-spatial/tegola/cache"
-	"github.com/go-spatial/tegola/dict"
+	"github.com/kosotd/tegola/cache"
+	"github.com/kosotd/tegola/dict"
 )
 
-const CacheType  = "memory"
+const CacheType = "memory"
 
 func init() {
 	cache.Register(CacheType, New)

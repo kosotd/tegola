@@ -5,7 +5,7 @@ package gpkg
 import (
 	"testing"
 
-	"github.com/go-spatial/tegola/provider"
+	"github.com/kosotd/tegola/provider"
 )
 
 // This is a test to just see that the init function is not doing

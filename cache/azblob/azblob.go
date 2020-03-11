@@ -11,9 +11,9 @@ import (
 
 	"github.com/Azure/azure-storage-blob-go/2017-07-29/azblob"
 
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/cache"
-	"github.com/go-spatial/tegola/dict"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/cache"
+	"github.com/kosotd/tegola/dict"
 )
 
 const CacheType = "azblob"
@@ -34,7 +34,7 @@ const (
 )
 
 const (
-	BlobHeaderLen = 8 // bytes
+	BlobHeaderLen = 8       // bytes
 	BlobReqMaxLen = 4194304 // ~4MB
 )
 
@@ -222,7 +222,6 @@ func (azb *Cache) Get(key *cache.Key) ([]byte, bool, error) {
 		ToBlockBlobURL().
 		Download(ctx, 0, 0, azblob.BlobAccessConditions{}, false)
 
-
 	if err != nil {
 		// check if 404
 		resErr, ok := err.(azblob.ResponseError)
@@ -252,9 +251,9 @@ func (azb *Cache) Purge(key *cache.Key) error {
 
 	ctx := context.Background()
 
-	_, err :=  azb.makeBlob(key).
+	_, err := azb.makeBlob(key).
 		Delete(ctx, azblob.DeleteSnapshotsOptionNone,
-		azblob.BlobAccessConditions{})
+			azblob.BlobAccessConditions{})
 
 	if err != nil {
 		return err

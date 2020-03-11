@@ -9,8 +9,8 @@ import (
 
 	"github.com/dimfeld/httptreemux"
 
-	"github.com/go-spatial/tegola/atlas"
-	"github.com/go-spatial/tegola/internal/log"
+	"github.com/kosotd/tegola/atlas"
+	"github.com/kosotd/tegola/internal/log"
 )
 
 const (

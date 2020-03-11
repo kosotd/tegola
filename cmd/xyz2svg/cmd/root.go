@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	"github.com/go-spatial/cobra"
-	"github.com/go-spatial/tegola/provider"
+	"github.com/kosotd/tegola/provider"
 
-	_ "github.com/go-spatial/tegola/provider/postgis"
+	_ "github.com/kosotd/tegola/provider/postgis"
 	_ "github.com/kosotd/tegola/provider/presto"
 )
 

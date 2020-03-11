@@ -1,10 +1,10 @@
 # Tegola
 
 [![Build Status](https://travis-ci.org/go-spatial/tegola.svg?branch=master)](https://travis-ci.org/go-spatial/tegola)
-[![Report Card](https://goreportcard.com/badge/github.com/go-spatial/tegola)](https://goreportcard.com/badge/github.com/go-spatial/tegola)
+[![Report Card](https://goreportcard.com/badge/github.com/kosotd/tegola)](https://goreportcard.com/badge/github.com/kosotd/tegola)
 [![Coverage Status](https://coveralls.io/repos/github/go-spatial/tegola/badge.svg?branch=master)](https://coveralls.io/github/go-spatial/tegola?branch=master)
-[![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/go-spatial/tegola)
-[![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://github.com/go-spatial/tegola/blob/master/LICENSE.md)
+[![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/kosotd/tegola)
+[![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://github.com/kosotd/tegola/blob/master/LICENSE.md)
 
 Tegola is a vector tile server delivering [Mapbox Vector Tiles](https://github.com/mapbox/vector-tile-spec) with support for [PostGIS](https://postgis.net/) and [GeoPackage](https://www.geopackage.org/) data providers. User documentation can be found at [tegola.io](https://tegola.io)
 
@@ -41,7 +41,7 @@ Use "tegola [command] --help" for more information about a command.
 ```
 
 ## Running tegola as a vector tile server
-1. Download the appropriate binary of tegola for your platform via the [release page](https://github.com/go-spatial/tegola/releases).
+1. Download the appropriate binary of tegola for your platform via the [release page](https://github.com/kosotd/tegola/releases).
 2. Setup your config file and run. Dy default tegola looks for a `config.toml` in the same directory as the binary. You can set a different location for the `config.toml` using a command flag:
 
 ```

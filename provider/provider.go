@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"github.com/go-spatial/geom"
-	"github.com/go-spatial/tegola/dict"
-	"github.com/go-spatial/tegola/internal/log"
+	"github.com/kosotd/tegola/dict"
+	"github.com/kosotd/tegola/internal/log"
 )
 
 type Tile interface {

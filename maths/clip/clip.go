@@ -5,10 +5,10 @@ import (
 
 	"github.com/go-spatial/geom"
 	"github.com/go-spatial/geom/cmp"
-	"github.com/go-spatial/tegola"
-	"github.com/go-spatial/tegola/basic"
-	"github.com/go-spatial/tegola/maths"
-	"github.com/go-spatial/tegola/maths/lines"
+	"github.com/kosotd/tegola"
+	"github.com/kosotd/tegola/basic"
+	"github.com/kosotd/tegola/maths"
+	"github.com/kosotd/tegola/maths/lines"
 )
 
 type byxy [][2]float64
