@@ -194,7 +194,7 @@ func transformVal(valType string, val interface{}) (interface{}, error) {
 }
 
 // decipherFields is responsible for processing the SQL result set, decoding geometries, ids and feature tags.
-func decipherFields(ctx context.Context, geomFieldname, idFieldname string, descriptions []*sql.ColumnType, values []interface{}) (gid uint64, geom []byte, tags map[string]interface{}, err error) {
+func decipherFields(ctx context.Context, geomFieldname, idFieldname string, descriptions []*sql.ColumnType, values []interface{}) (gid uint64, geom string, tags map[string]interface{}, err error) {
 	var ok bool
 
 	tags = make(map[string]interface{})
@@ -202,7 +202,7 @@ func decipherFields(ctx context.Context, geomFieldname, idFieldname string, desc
 	for i := range values {
 		// do a quick check
 		if err := ctx.Err(); err != nil {
-			return 0, nil, nil, err
+			return 0, "", nil, err
 		}
 
 		// skip nil values.
@@ -214,8 +214,8 @@ func decipherFields(ctx context.Context, geomFieldname, idFieldname string, desc
 
 		switch desc.Name() {
 		case geomFieldname:
-			if geom, ok = values[i].([]byte); !ok {
-				return 0, nil, nil, fmt.Errorf("unable to convert geometry field (%v) into bytes.", geomFieldname)
+			if geom, ok = values[i].(string); !ok {
+				return 0, "", nil, fmt.Errorf("unable to convert geometry field (%v) into bytes.", geomFieldname)
 			}
 		case idFieldname:
 			gid, err = gId(values[i])

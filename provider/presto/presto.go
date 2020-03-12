@@ -16,6 +16,7 @@ import (
 	"github.com/kosotd/tegola/provider"
 
 	"github.com/kosotd/tegola/dict"
+	"github.com/paulsmith/gogeos/geos"
 	_ "github.com/prestodb/presto-go-client/presto"
 )
 
@@ -323,7 +324,7 @@ func (p Provider) inspectLayerGeomType(l *Layer) error {
 	// https://github.com/kosotd/tegola/issues/180
 	//
 	// case insensitive search
-	re := regexp.MustCompile(`(?i)ST_AsBinary`)
+	re := regexp.MustCompile(`(?i)ST_AsText`)
 	sql := re.ReplaceAllString(l.sql, "ST_GeometryType")
 
 	// we only need a single result set to sniff out the geometry type
@@ -505,8 +506,16 @@ func (p Provider) TileFeatures(ctx context.Context, layer string, tile provider.
 			continue
 		}
 
+		wktGeom, err := geos.FromWKT(geobytes)
+		if err != nil {
+			return fmt.Errorf("error running layer (%v) SQL (%v): %v", layer, sql, err)
+		}
+		wkbGeom, err := wktGeom.WKB()
+		if err != nil {
+			return fmt.Errorf("error running layer (%v) SQL (%v): %v", layer, sql, err)
+		}
 		// decode our WKB
-		geometry, err := wkb.DecodeBytes(geobytes)
+		geometry, err := wkb.DecodeBytes(wkbGeom)
 		if err != nil {
 			switch err.(type) {
 			case wkb.ErrUnknownGeometryType:

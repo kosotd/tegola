@@ -1,6 +1,27 @@
 # PostGIS
 The PostGIS provider manages querying for tile requests against a Postgres database with the [PostGIS](http://postgis.net/) extension installed. The connection between tegola and Postgis is configured in a `tegola.toml` file. An example minimum connection config:
 
+### Config example
+
+```
+[[providers]]
+name = "layer"              
+type = "presto"               
+host = "localhost"          
+port = 8080                 
+catalog = "postgresql"        
+scheme = "public"
+user = "user"             
+password = "password" 
+srid = 4326                   
+
+  [[providers.layers]]
+  name = "table"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsText(ST_GeometryFromText(geom)) AS geom FROM public.table WHERE ST_Intersects(ST_GeometryFromText(geom), !BBOX!)"
+```
+
 
 ```toml
 [[providers]]
