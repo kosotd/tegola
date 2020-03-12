@@ -1,6 +1,10 @@
 # PostGIS
 The PostGIS provider manages querying for tile requests against a Postgres database with the [PostGIS](http://postgis.net/) extension installed. The connection between tegola and Postgis is configured in a `tegola.toml` file. An example minimum connection config:
 
+```
+sudo apt-get install libgeos-dev
+```
+
 ### Config example
 
 ```
