@@ -2,7 +2,7 @@ package presto
 
 import (
 	"context"
-	"database/sql"
+	dsql "database/sql"
 	"encoding/base64"
 	"fmt"
 	"log"
@@ -24,7 +24,7 @@ const Name = "presto"
 
 // Provider provides the presto data provider.
 type Provider struct {
-	pool *sql.DB
+	pool *dsql.DB
 	// map of layer name and corresponding sql
 	layers     map[string]Layer
 	srid       uint64
@@ -33,7 +33,7 @@ type Provider struct {
 
 const (
 	// We quote the field and table names to prevent colliding with presto keywords.
-	stdSQL = `SELECT %[1]v FROM %[2]v WHERE "%[3]v" AND ` + bboxToken
+	stdSQL = `SELECT %[1]v FROM %[2]v WHERE ST_Intersects(ST_GeometryFromText("%[3]v"), ` + bboxToken + ")"
 
 	// SQL to get the column names, without hitting the information_schema. Though it might be better to hit the information_schema.
 	fldsSQL = `SELECT * FROM %[1]v LIMIT 0;`
@@ -78,7 +78,7 @@ var isSelectQuery = regexp.MustCompile(`(?i)^((\s*)(--.*\n)?)*select`)
 // in the provided map[string]interface{} map:
 //
 // 	host (string): [Required] presto database host
-// 	port (int): [Required] presto database port (required)
+// 	port (int): [Required] presto database port
 // 	catalog (string): [Required] presto database catalog
 // 	scheme (string): [Required] presto database scheme
 // 	user (string): [Required] presto database user
@@ -140,15 +140,15 @@ func NewTileProvider(config dict.Dicter) (provider.Tiler, error) {
 		return nil, err
 	}
 
-	fmt.Println(user, password)
+	_ = fmt.Sprintf("%s %s", user, password)
 	url := fmt.Sprintf("http://user@%s:%d?catalog=%s&schema=%s", host, port, catalog, scheme)
 
 	p := Provider{
 		srid: uint64(srid),
 	}
 
-	if p.pool, err = sql.Open("presto", url); err != nil {
-		return nil, fmt.Errorf("Failed while creating connection pool: %v", err)
+	if p.pool, err = dsql.Open("presto", url); err != nil {
+		return nil, fmt.Errorf("failed while creating presto connection: %v", err)
 	}
 
 	layers, err := config.MapSlice(ConfigKeyLayers)
@@ -163,7 +163,7 @@ func NewTileProvider(config dict.Dicter) (provider.Tiler, error) {
 
 		lname, err := layer.String(ConfigKeyLayerName, nil)
 		if err != nil {
-			return nil, fmt.Errorf("For layer (%v) we got the following error trying to get the layer's name field: %v", i, err)
+			return nil, fmt.Errorf("for layer (%v) we got the following error trying to get the layer's name field: %v", i, err)
 		}
 
 		if j, ok := lyrsSeen[lname]; ok {
@@ -508,7 +508,7 @@ func (p Provider) TileFeatures(ctx context.Context, layer string, tile provider.
 
 		wkbGeom, err := base64.StdEncoding.DecodeString(geobytes)
 		if err != nil {
-			return fmt.Errorf("error running layer (%v) SQL (%v): %v", layer, sql, err)
+			return fmt.Errorf("error decoding base64 geometry in layer: (%v) SQL (%v): %v", layer, sql, err)
 		}
 		// decode our WKB
 		geometry, err := wkb.DecodeBytes(wkbGeom)

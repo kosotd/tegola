@@ -2,7 +2,7 @@ package presto
 
 import (
 	"context"
-	"database/sql"
+	dsql "database/sql"
 	"fmt"
 	"log"
 	"regexp"
@@ -10,14 +10,13 @@ import (
 	"strings"
 
 	"github.com/go-spatial/geom/slippy"
-	"github.com/jackc/pgx/pgtype"
 	"github.com/kosotd/tegola"
 	"github.com/kosotd/tegola/basic"
 	"github.com/kosotd/tegola/provider"
 )
 
 // genSQL will fill in the SQL field of a layer given a pool, and list of fields.
-func genSQL(l *Layer, pool *sql.DB, tblname string, flds []string) (sql string, err error) {
+func genSQL(l *Layer, pool *dsql.DB, tblname string, flds []string) (sql string, err error) {
 
 	// we need to hit the database to see what the fields are.
 	if len(flds) == 0 {
@@ -43,7 +42,7 @@ func genSQL(l *Layer, pool *sql.DB, tblname string, flds []string) (sql string, 
 			return "", err
 		}
 		if len(fdescs) == 0 {
-			return "", fmt.Errorf("No fields were returned for table %v", tblname)
+			return "", fmt.Errorf("no fields were returned for table %v", tblname)
 		}
 
 		// to avoid field names possibly colliding with Postgres keywords,
@@ -109,12 +108,12 @@ func replaceTokens(sql string, srid uint64, tile provider.Tile) (string, error) 
 	// TODO: it's currently assumed the tile will always be in WebMercator. Need to support different projections
 	minGeo, err := basic.FromWebMercator(srid, basic.Point{bufferedExtent.MinX(), bufferedExtent.MinY()})
 	if err != nil {
-		return "", fmt.Errorf("Error trying to convert tile point: %v ", err)
+		return "", fmt.Errorf("error trying to convert tile point: %v ", err)
 	}
 
 	maxGeo, err := basic.FromWebMercator(srid, basic.Point{bufferedExtent.MaxX(), bufferedExtent.MaxY()})
 	if err != nil {
-		return "", fmt.Errorf("Error trying to convert tile point: %v ", err)
+		return "", fmt.Errorf("error trying to convert tile point: %v ", err)
 	}
 
 	minPt, maxPt := minGeo.AsPoint(), maxGeo.AsPoint()
@@ -152,7 +151,11 @@ func uppercaseTokens(str string) string {
 }
 
 func transformVal(valType string, val interface{}) (interface{}, error) {
-	switch valType {
+	valType = regexp.MustCompile(`(?i)varchar\(\d+\)`).ReplaceAllString(valType, "varchar")
+	valType = regexp.MustCompile(`(?i)decimal\(\d+,\d+\)`).ReplaceAllString(valType, "decimal")
+	valType = regexp.MustCompile(`(?i)char\(\d+\)`).ReplaceAllString(valType, "char")
+
+	switch strings.ToLower(valType) {
 	default:
 		switch vt := val.(type) {
 		default:
@@ -163,9 +166,9 @@ func transformVal(valType string, val interface{}) (interface{}, error) {
 		case string:
 			return vt, nil
 		}
-	case "BOOL", "BYTEA", "TEXT", "OID" /*pgtype.VarcharOID,*/, "JSON":
+	case "boolean", "char", "array(varchar)", "array", "varbinary", "varchar":
 		return val, nil
-	case "INT8", "INT2", "INT4", "FLOAT4", "FLOAT8":
+	case "double", "smallint", "integer", "bigint", "decimal", "real":
 		switch vt := val.(type) {
 		case int8:
 			return int64(vt), nil
@@ -188,13 +191,13 @@ func transformVal(valType string, val interface{}) (interface{}, error) {
 		default: // should never happen.
 			return nil, fmt.Errorf("%v type is not supported. (should never happen)", valType)
 		}
-		//case pgtype.DateOID, pgtype.TimestampOID, pgtype.TimestamptzOID:
-		//	return fmt.Sprintf("%v", val), nil
+	case "timestamp", "date", "time":
+		return fmt.Sprintf("%v", val), nil
 	}
 }
 
 // decipherFields is responsible for processing the SQL result set, decoding geometries, ids and feature tags.
-func decipherFields(ctx context.Context, geomFieldname, idFieldname string, descriptions []*sql.ColumnType, values []interface{}) (gid uint64, geom string, tags map[string]interface{}, err error) {
+func decipherFields(ctx context.Context, geomFieldname, idFieldname string, descriptions []*dsql.ColumnType, values []interface{}) (gid uint64, geom string, tags map[string]interface{}, err error) {
 	var ok bool
 
 	tags = make(map[string]interface{})
@@ -215,24 +218,19 @@ func decipherFields(ctx context.Context, geomFieldname, idFieldname string, desc
 		switch desc.Name() {
 		case geomFieldname:
 			if geom, ok = values[i].(string); !ok {
-				return 0, "", nil, fmt.Errorf("unable to convert geometry field (%v) into bytes.", geomFieldname)
+				return 0, "", nil, fmt.Errorf("unable to convert geometry field (%v) into bytes", geomFieldname)
 			}
 		case idFieldname:
 			gid, err = gId(values[i])
 		default:
 			switch vex := values[i].(type) {
-			case map[string]pgtype.Text:
+			case map[string]interface{}:
 				for k, v := range vex {
 					// we need to check if the key already exists. if it does, then don't overwrite it
 					if _, ok := tags[k]; !ok {
-						tags[k] = v.String
+						tags[k] = fmt.Sprintf("%v", v)
 					}
 				}
-			case *pgtype.Numeric:
-				var num float64
-				vex.AssignTo(&num)
-
-				tags[desc.Name()] = num
 			default:
 				value, err := transformVal(desc.DatabaseTypeName(), values[i])
 				if err != nil {
@@ -270,6 +268,6 @@ func gId(v interface{}) (gid uint64, err error) {
 	case string:
 		return strconv.ParseUint(aval, 10, 64)
 	default:
-		return gid, fmt.Errorf("unable to convert field into a uint64.")
+		return gid, fmt.Errorf("unable to convert field into a uint64")
 	}
 }
