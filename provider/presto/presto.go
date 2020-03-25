@@ -36,7 +36,7 @@ const (
 	stdSQL = `SELECT %[1]v FROM %[2]v WHERE ST_Intersects(ST_GeometryFromText("%[3]v"), ` + bboxToken + ")"
 
 	// SQL to get the column names, without hitting the information_schema. Though it might be better to hit the information_schema.
-	fldsSQL = `SELECT * FROM %[1]v LIMIT 0;`
+	fldsSQL = `SELECT * FROM %[1]v LIMIT 0`
 )
 
 const (

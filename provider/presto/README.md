@@ -23,7 +23,18 @@ srid = 4326
   name = "table"
   geometry_fieldname = "geom"
   id_fieldname = "gid"
-  sql = "SELECT ST_AsBinary(ST_GeometryFromText(geom)) AS geom FROM public.table WHERE ST_Intersects(ST_GeometryFromText(geom), !BBOX!)"
+  sql = "SELECT ST_AsBinary(ST_GeometryFromText(geom)) AS geom, gid FROM public.table WHERE ST_Intersects(ST_GeometryFromText(geom), !BBOX!)"
+  
+  [[providers.layers]]
+  name = "table1"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "(SELECT geom, gid FROM public.table1) AS sub"
+
+  [[providers.layers]]
+  name = "table2"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
 ```
 
 

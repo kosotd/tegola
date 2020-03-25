@@ -71,9 +71,9 @@ func genSQL(l *Layer, pool *dsql.DB, tblname string, flds []string) (sql string,
 	// to avoid field names possibly colliding with Postgres keywords,
 	// we wrap the field names in quotes
 	if fgeom == -1 {
-		flds = append(flds, fmt.Sprintf(`ST_AsBinary("%v") AS "%[1]v"`, l.geomField))
+		flds = append(flds, fmt.Sprintf(`ST_AsBinary(ST_GeometryFromText("%v")) AS "%[1]v"`, l.geomField))
 	} else {
-		flds[fgeom] = fmt.Sprintf(`ST_AsBinary("%v") AS "%[1]v"`, l.geomField)
+		flds[fgeom] = fmt.Sprintf(`ST_AsBinary(ST_GeometryFromText("%v")) AS "%[1]v"`, l.geomField)
 	}
 
 	if !fgid && l.idField != "" {
